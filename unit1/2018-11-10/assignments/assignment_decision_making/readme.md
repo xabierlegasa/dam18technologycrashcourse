@@ -16,7 +16,7 @@ tracked.
 for other destinations.
 
 
-# Steps & Analysis
+# Steps I followed & Analysis
 
 
 1. Downloaded the 2 files of data we have:
@@ -52,9 +52,38 @@ Each log item is converted to a single row:
       ...
 ```
 
+Results in...
 ```
 queries/correct,queries/error,users,timestamp
 645,14,659,2018-08-01 19:43:11
 650,16,666,2018-08-01 19:45:24
 ...
 ```
+
+3. Add month and week number columns
+```
+=MONTH(D14)
+=WEEKNUM(D14, 21)
+```
+
+4. Add percentaje of errors column
+```
+=100*B14/C14
+```
+
+![error percentage](screenshoot_1.png)
+
+5. Calculate error percentage per month and per week to see evolution. I used AVERAGEIF() function
+```
+=AVERAGEIF(E14:E5213,"=8",G14:G5213)
+=AVERAGEIF($F$14:$F$5213,"="&K18,$G$14:$G$5213)
+```
+![error percentage](screenshoot_2.png)
+
+Notice that:
+* September has 30 days but we have data until day 27 at 19h. We dont really mind since we are doing a media of error percentages.
+* We have taken percentage of errors per row, and not total errors, so we dont mind not having the full day data in some cases.
+* We see errors have gone from 1.87 in August to 0.96 in September
+
+6. Added a graph to see evolution more closelly
+![error percentage](screenshoot_3.png)

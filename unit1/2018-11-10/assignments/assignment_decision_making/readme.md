@@ -24,6 +24,37 @@ for other destinations.
 aws s3 cp s3://data.public.bdatainstitute.com/dam18 . --recursive
 ```
 
-2. Converted both Json files to CSV with an online tool () and pasted on a google sheet:
+2. Converted both Json files to CSV with an online tool (https://konklone.io/json/) and pasted on a google sheet:
 
 [Assignment Google Sheet (read only)](https://docs.google.com/spreadsheets/d/10ACyW-WBeB19h12ZH0DQcL8VIuGCOu-6ouJH-il0DDQ/edit?usp=sharing "Assignment link")
+
+Each log item is converted to a single row:
+```
+{  
+   "destination_id":18452212,
+   "logs":[  
+      {  
+         "queries":{  
+            "correct":"645",
+            "error":"14"
+         },
+         "users":"659",
+         "timestamp":"2018-08-01 19:43:11"
+      },
+      {  
+         "queries":{  
+            "correct":"650",
+            "error":"16"
+         },
+         "users":"666",
+         "timestamp":"2018-08-01 19:45:24"
+      },
+      ...
+```
+
+```
+queries/correct,queries/error,users,timestamp
+645,14,659,2018-08-01 19:43:11
+650,16,666,2018-08-01 19:45:24
+...
+```

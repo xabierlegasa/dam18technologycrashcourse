@@ -16,11 +16,14 @@ tracked.
 for other destinations.
 
 
-# Proposed Solution & Steps
+# Steps & Analysis
 
 
-1. I have Downloaded the 2 files of data we have
+1. Downloaded the 2 files of data we have:
 ```
 aws s3 cp s3://data.public.bdatainstitute.com/dam18 . --recursive
 ```
 
+2. Converted both Json files to CSV with an online tool () and pasted on a google sheet:
+
+[Assignment Google Sheet (read only)](https://docs.google.com/spreadsheets/d/10ACyW-WBeB19h12ZH0DQcL8VIuGCOu-6ouJH-il0DDQ/edit?usp=sharing "Assignment link")

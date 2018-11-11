@@ -85,5 +85,49 @@ Notice that:
 * We have taken percentage of errors per row, and not total errors, so we dont mind not having the full day data in some cases.
 * We see errors have gone from 1.87 in August to 0.96 in September
 
-6. Added a graph to see evolution more closelly
+6. Added a graph to see evolution more closely
 ![error percentage](screenshoot_3.png)
+
+Note: Agust to September week change happens on week 35
+
+7. Analized the graph
+
+* If we compare August vs September, we see there is a 48.39 % decrease on the error ratio
+ Difference / Original = (0.96 - 1.87) / 1.87 = 48.39% Down
+ 
+* But on the week by week graph, I see there is a huge difference on week 33, with a 3.74 % of errors. I want to have a closer look to this week, so I have
+ 
+* I create a new column 'error percent week 33' where only percentages of week 33 will appear.
+```
+=IF(F14=33, G14, )
+```
+I get the following chart...
+
+![error percentage](screenshoot_4.png)
+
+And I realize there are error percentages above 100!. Something is wrong :-/ 
+
+I get a graph with all the data I have:
+
+![error percentage](screenshoot_5.png)
+
+I add a new column  'Is corrupted' to detect corrupt rows
+```
+=IF(A14+B14<>C14, 1, )
+```
+
+And I print also percentage of corrupted rows
+
+![error percentage](screenshoot_6.png)
+
+Here we have an example of a corrupted row, where correct plus error does not match users
+```
+{  
+         "queries":{  
+            "correct":"196",
+            "error":"123"
+         },
+         "users":"73",
+         "timestamp":"2018-08-18 11:30:19"
+}
+```

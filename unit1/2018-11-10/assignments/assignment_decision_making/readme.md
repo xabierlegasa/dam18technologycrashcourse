@@ -105,7 +105,7 @@ I get the following chart...
 
 ![error percentage](screenshoot_4.png)
 
-And I realize there are error percentages above 100!. Something is wrong :-/ 
+We can see there are error percentages above 100. Something is wrong!
 
 I get a graph with all the data I have:
 
@@ -116,7 +116,7 @@ I add a new column  'Is corrupted' to detect corrupt rows
 =IF(A14+B14<>C14, 1, )
 ```
 
-And I print also percentage of corrupted rows
+Print also percentage of corrupted rows
 
 ![error percentage](screenshoot_6.png)
 
@@ -131,3 +131,11 @@ Here we have an example of a corrupted row, where correct plus error does not ma
          "timestamp":"2018-08-18 11:30:19"
 }
 ```
+
+
+
+
+
+# Answer
+
+@TODO

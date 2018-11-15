@@ -23,9 +23,13 @@ for other destinations.
 * I have decided to exclude corrupted rows for doing the analysis.
 * If we compare error ratio month to month we se it went from 1.27% to 1.07%.
 ![image](screenshoot_7.png)
+
 * If we compare erro ratio per week, se we this data.
+
 ![image](screenshoot_8.png)
+
 or more graphically:
+
 ![image](screenshoot_9.png)
 * I think this data could be enough to decide to either give the bonus or not.
 

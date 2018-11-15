@@ -16,7 +16,20 @@ tracked.
 for other destinations.
 
 
-# Steps I followed & Analysis
+# Results && Analisis
+
+
+* From 5199 rows of data we have, there are 741 that are invalid (14.25% of the total).
+* I have decided to exclude corrupted rows for doing the analysis.
+* If we compare error ratio month to month we se it went from 1.27% to 1.07%.
+![image](screenshoot_7.png)
+* If we compare erro ratio per week, se we this data.
+![image](screenshoot_8.png)
+or more graphically:
+![image](screenshoot_9.png)
+
+
+# Steps I followed
 
 
 1. Downloaded the 2 files of data we have:
@@ -52,7 +65,7 @@ Each log item is converted to a single row:
       ...
 ```
 
-Results in...
+The result is this;
 ```
 queries/correct,queries/error,users,timestamp
 645,14,659,2018-08-01 19:43:11
@@ -95,7 +108,7 @@ Note: Agust to September week change happens on week 35
 * If we compare August vs September, we see there is a 48.39 % decrease on the error ratio
  Difference / Original = (0.96 - 1.87) / 1.87 = 48.39% Down
  
-* But on the week by week graph, I see there is a huge difference on week 33, with a 3.74 % of errors. I want to have a closer look to this week, so I have
+* But on the week by week graph, I see there is a huge difference on week 33, with a 3.74 % of errors. I want to have a closer look to this week.
  
 * I create a new column 'error percent week 33' where only percentages of week 33 will appear.
 ```
@@ -116,11 +129,11 @@ I add a new column  'Is corrupted' to detect corrupt rows
 =IF(A14+B14<>C14, 1, )
 ```
 
-Print also percentage of corrupted rows
+I've printed the percentage of corrupted rows
 
 ![error percentage](screenshoot_6.png)
 
-Here we have an example of a corrupted row, where correct plus error does not match users
+Here we have an example of a corrupted row, where correct queries and error queries do not match number of users
 ```
 {  
          "queries":{  
@@ -133,9 +146,5 @@ Here we have an example of a corrupted row, where correct plus error does not ma
 ```
 
 
-
-
-
-# Answer
-
-@TODO
+8. I realize I did an average of error ratio of each day which is wrong, I need to take total users and total incorrect number of queries.
+Let's calculate correct ratios  before and after excluding corrupted data

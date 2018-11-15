@@ -17,5 +17,25 @@ s3://data.public.bdatainstitute.com/dam18/search_logs/2018/09/2018_09_18452212_l
 
 ## Proposed Solution
 
+> AWS has itself a cost calculator: 
+>
+> [See AWS Cost calculator](https://calculator.s3.amazonaws.com/index.html)
+
+
+
+5000 destinations * 5 years * 12 months =  300000 files to store
+300000 files * 232 922 bytes each file = 69.8766 GB
+=========================
+Total size: 69.8766 GB
+
+
+If we don't use AWS Free tier, storage cost will be 1.61$ per month, according to the AWS calculator
+
+We need to add other costs depending on
+* Number of requests
+* Data returned by s3 Select
+...
+
+We need to ask this data to give the exact amount
 
 

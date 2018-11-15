@@ -11,4 +11,4 @@
 - Git, github
 - Json
 
-[Session assignments](unit1/2018-11-10/assignments/assignment_1/readme.md)
+[Session assignments](unit1/2018-11-10/assignments/)

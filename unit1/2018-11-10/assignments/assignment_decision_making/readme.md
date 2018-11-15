@@ -27,6 +27,7 @@ for other destinations.
 ![image](screenshoot_8.png)
 or more graphically:
 ![image](screenshoot_9.png)
+* I think this data could be enough to decide to either give the bonus or not.
 
 
 # Steps I followed

@@ -1,4 +1,4 @@
-#  2018-2019 Data Analytics Masterclass (DAM18)
+# 2018-2019 Data Analytics Masterclass (DAM18)
 
 ## Prework
 
@@ -10,13 +10,13 @@
 ## Unit1
 
 ##### 2018-11-01 Session
-    
-- AWS S3
-- AWS CLI
-- Json
-- Excel
-- Git, github
-- Json
+
+  - AWS S3
+  - AWS CLI
+  - Json
+  - Excel
+  - Git, github
+  - Json
 
 [Slides](unit1/2018-11-10/Technology_Crash_Course.pdf)
 

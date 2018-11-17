@@ -35,3 +35,7 @@
 
 - AWS Redshift
 
+Assignment 1: 
+
+ Research about aws redshift alternatives.
+ Write a report with advantages vs disadvantages

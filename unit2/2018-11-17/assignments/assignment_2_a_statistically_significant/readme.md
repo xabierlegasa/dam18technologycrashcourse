@@ -13,6 +13,16 @@ You should answer the question by writing a brief summary.
 Hint: “Meaningful” can be interpreted as “statistically significant”.
 
 
+## Result
+
+Ticket average under these constraints comparing FR vs IT is not statistically significant.
+* Ticket is calculated excluding VAT.
+* Transaction type is "payment"
+* Transaction status is "1" 
+
+See steps section for more info.
+
+
 ## Steps
 
 1. First lets remember when is a difference "stastitically significant".
@@ -47,15 +57,33 @@ Sum of transaction_amount-s where;
 3. Calculate Variances:
 ```
 =IF(AND(H2 = 1, I2="payment"),"1","")
-=VAR(FILTER(M2:M100, P2:P100 = "1", K2:K100 = "FR")) 
+=VAR(FILTER(M2:M13770, P2:P13770 = "1", K2:K13770 = "FR")) 
 ```
 ![image](img_2.png)
 
 
+4. Taking as true FR data, lets see if retults in Italia are the same:
+
+H0: X =  μ 
+H1: X != μ
 
 
+μ =  media poblacional = 22,62
+X = media muestral = 21.56
+n = Tamaño de la muestra = 3589
+α = Nivel de significancia = 5% = 0.005
+θ = Varianza = 215.07
 
+Como n>= 30 se usará Tc
 
+Quedaría así:
+```
+=(21.58-22.62)/(215.07/SQRT(3589))
+```
+
+Esto da -0.29.
+Este número está en la zona de aceptación de H0.
+Si H0 se acepta, podríamos decir que la diferencia no es estadísticamente relevante.
 
 
 ```

@@ -1,0 +1,236 @@
+/**select *
+from sql_masterclass.event
+limit 5;
+*//**
+select *
+from sql_masterclass.category
+where catgroup = 'Sports'
+limit 10;
+
+
+select catgroup
+from sql_masterclass.category
+group by catgroup
+
+select state
+from sql_masterclass.users
+group by state
+
+select *
+from sql_masterclass.venue
+where venuestate in ('OH', 'FL')
+limit 10;
+
+select venuestate
+from sql_masterclass.venue
+group by venuestate
+
+select (firstname || ' ' || lastname) as full_name
+from sql_masterclass.users
+where email like '%nunc.edu%'
+limit 10
+
+select firstname + ' ' + lastname as full_name
+from sql_masterclass.users
+where email like '%nunc.edu%'
+limit 10
+
+
+
+select
+    venuename,
+    venueseats
+from
+    sql_masterclass.venue
+where
+    venueseats > 1000
+order by
+    venueseats desc limit 10;
+
+
+
+  select
+    username, likemusicals, likejazz, likeopera
+from
+    sql_masterclass.users
+where
+    likemusicals = 1
+    and (likejazz = 1 or likeopera = 1)
+limit 10;
+
+
+select
+    AVG(pricepaid), MEDIAN(pricepaid)
+from
+    sql_masterclass.sales
+
+select count(userid)
+from sql_masterclass.users
+
+
+select
+    count(userid), state
+from
+    sql_masterclass.users
+group by state
+
+
+select
+	state,
+    count(1)
+from
+    sql_masterclass.users
+group by 1;
+
+
+select
+	state,
+    count(1)
+from
+    sql_masterclass.users
+group by 1
+order by 2 desc
+
+select
+	state,
+    count(1)
+from
+    sql_masterclass.users
+group by 1
+having count(1) > 1950
+order by 2 desc
+
+select
+	state,
+    count(1)
+from
+    sql_masterclass.users
+group by 1
+having count(1) > 1950
+order by 2 desc
+
+group by 1 ===> agrupar por el primer campo del select
+order by 2 desc ===> Ordernar por el segundo campo
+having ===> No se puede usar el número de campo
+
+select
+	case state
+    	when 'PE' then 'Pensilvania'
+        when 'WA' then 'Washington'
+        else 'Rest of the country'
+    end as location,
+    count(distinct userid) as users
+from sql_masterclass.users
+group by 1
+
+select catgroup
+from sql_masterclass.category
+group by catgroup
+
+
+select c.catgroup, count(e.eventid)
+from sql_masterclass.event as e
+left join sql_masterclass.category as c on c.catid = e.catid
+group by c.catgroup
+
+
+
+select
+    u.userid,
+    count(salesid) as num_ventas
+from
+    sql_masterclass.sales s
+left join
+    sql_masterclass.users u
+        on u.userid = s.sellerid
+where date_trunc('month', saletime) = '2018-10-01'
+group by
+    u.userid
+order by num_ventas desc
+limit 10
+
+
+select
+    date_trunc('month', saletime)
+from
+    sql_masterclass.sales s
+limit 10
+
+
+
+select
+    u.userid,
+    sum(s.commission) as com_total
+from
+    sql_masterclass.sales s
+left join
+    sql_masterclass.users u
+        on u.userid = s.sellerid
+where
+	s.saletime>='2008-10-01' and s.saletime< '2008-11-01'
+group by
+    u.userid
+order by com_total desc
+limit 10
+
+
+select
+    eventname
+from
+    sql_masterclass.venue
+where
+    eventname like '%pring%'
+
+
+select
+    s.salesid, e.eventname, s.saletime, e.starttime
+from
+    sql_masterclass.sales s
+    inner join sql_masterclass.event e on s.eventid = e.eventid
+where
+    s.saletime > e.starttime
+    limit 10
+
+
+window functions
+Num de ventas por seller:
+
+select *,
+sum(qty) over (partition by sellerid) as user_total_qty
+from sql_masterclass.winsales
+limit 10;
+
+
+Añadir columna con fecha primera venta
+
+select
+    *,
+    first_value(salesid) over (partition
+by
+    sellerid
+order by
+    dateid rows between unbounded preceding and unbounded following) as first_seller_date
+from
+    sql_masterclass.winsales limit 10;
+
+
+último pago en euros por país
+
+select distinct user_acquisition_country,
+last_value(pt.transaction_amount*pt.xrate_eur) over (partition by us.user_acquisition_country order by transaction_timestamp  rows between unbounded preceding and unbounded following) as last_transaction
+from tangarana.users us inner join tangarana.payment_transactions  pt on us.user_id = pt.user_id
+where transaction_type = 'payment';
+
+*/
+
+select distinct user_acquisition_country,
+last_value(pt.transaction_amount*pt.xrate_eur) over (partition by us.user_acquisition_country order by transaction_timestamp  rows between unbounded preceding and unbounded following) as last_transaction
+from tangarana.users us inner join tangarana.payment_transactions  pt on us.user_id = pt.user_id
+where transaction_type = 'payment';
+
+
+
+
+
+
+

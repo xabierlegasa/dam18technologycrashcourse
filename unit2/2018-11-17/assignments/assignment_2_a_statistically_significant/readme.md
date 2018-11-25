@@ -102,3 +102,23 @@ and transaction_type = 'payment'
 and transaction_status = 1; 
 ```
 
+
+# Learnings
+
+Usando una web online, podemos sacar resultados
+
+Test de media: https://www.medcalc.org/calc/comparison_of_means.php
+
+Nota: Cuando hay muchos datos, se puede coger todos los datos cuando mod x sea 0.
+Si queremos coger uno de cada 3 resultados, hacemos MOD(3, field_name) as ALGO y cogemos solo cuando ALGO sea 0
+
+
+
+
+
+
+
+
+
+
+

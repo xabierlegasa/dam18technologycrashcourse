@@ -1,9 +1,7 @@
+# Data Analyst Masterclass Barcelona 2018-2019
 
+Material: https://github.com/barcelonadatainstitute/dam18
 
-
-
-
-# 2018-2019 Data Analytics Masterclass (DAM18)
 
 ## Prework
 
